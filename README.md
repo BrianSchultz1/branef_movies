@@ -19,6 +19,6 @@ Tecnologias Utilizadas:
 Recursos:
 
     
-    Introdução à educação financeira
+    
     Interface fácil de usar e escalável
  
