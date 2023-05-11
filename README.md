@@ -1,4 +1,4 @@
-<h1>Nubank - Clone Home</h1>
+<h1>Branef - Top Movies</h1>
 Introdução
 
 Esta é uma aplicação Mobile utilizando Flutter, capaz de consumir a API do TMDB. Ela lista os top mais filmes populares e também os detalhes deles
