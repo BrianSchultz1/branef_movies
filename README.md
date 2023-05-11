@@ -1,11 +1,11 @@
 <h1>Branef - Top Movies</h1>
 Introdução
 
-Esta é uma aplicação Mobile utilizando Flutter, capaz de consumir a API do TMDB. Ela lista os top mais filmes populares e também os detalhes deles
+    Esta é uma aplicação Mobile utilizando Flutter, capaz de consumir a API do TMDB. Ela lista os top mais filmes populares e também       os detalhes deles
 
 Status:
 
-Em desenvolvimento 
+    Em desenvolvimento 
     
 Tecnologias Utilizadas:
 
