@@ -1,16 +1,24 @@
-# branef_movies
+<h1>Branef - Top Movies</h1>
+Introdução
 
-A new Flutter project.
+    Esta é uma aplicação Mobile utilizando Flutter, capaz de consumir a API do TMDB. Ela lista os top mais filmes populares e também       os detalhes deles
 
-## Getting Started
+Status:
 
-This project is a starting point for a Flutter application.
+    Em desenvolvimento 
+    
+Tecnologias Utilizadas:
 
-A few resources to get you started if this is your first Flutter project:
+    Flutter Modular
+    Flutter Bloc
+    Mocktail
+    Http
+    Dart
+    Flutter
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+Recursos:
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+    
+    
+    Interface fácil de usar e escalável
+ 
