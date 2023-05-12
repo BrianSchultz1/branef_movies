@@ -28,15 +28,22 @@ environment:
 # the latest version available on pub.dev. To see which dependencies have newer
 # versions available, run `flutter pub outdated`.
 dependencies:
-  device_preview: ^1.1.0
-  bloc: ^8.1.1
   flutter:
     sdk: flutter
+    
 
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
+  http: ^0.13.6
+  google_fonts: ^4.0.4
+  device_preview: ^1.1.0
+  bloc: ^8.1.1
+  flutter_bloc: ^8.1.2
+  flutter_modular: ^5.0.3
+  mocktail: ^0.3.0
+
 
 dev_dependencies:
   flutter_test:
@@ -76,12 +83,14 @@ flutter:
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
   # example:
-  # fonts:
-  #   - family: Schyler
-  #     fonts:
-  #       - asset: fonts/Schyler-Regular.ttf
-  #       - asset: fonts/Schyler-Italic.ttf
-  #         style: italic
+  fonts:
+    - family: Romanesco
+      fonts:
+        - asset: assets/fonts/Romanesco-Regular.ttf    
+    - family: Staatliches
+      fonts:
+        - asset: assets\fonts\Staatliches-Regular.ttf
+
   #   - family: Trajan Pro
   #     fonts:
   #       - asset: fonts/TrajanPro.ttf

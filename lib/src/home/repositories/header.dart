@@ -1,5 +1,5 @@
-import 'package:branef_movies/utils/colors_standard.dart';
 import 'package:flutter/material.dart';
+import '../components/colors_standard.dart';
 
 class Header extends StatefulWidget {
   const Header({super.key});
@@ -14,7 +14,6 @@ class _HeaderState extends State<Header> {
     return Container(
       color: backgroundColor,
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           const SizedBox(height: 12),
           Center(

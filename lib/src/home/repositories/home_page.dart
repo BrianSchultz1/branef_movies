@@ -1,7 +1,7 @@
-import 'package:branef_movies/pages/home/models/header.dart';
-import 'package:branef_movies/utils/colors_standard.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import '../components/colors_standard.dart';
+import 'header.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
