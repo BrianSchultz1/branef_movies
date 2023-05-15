@@ -30,7 +30,10 @@ class _HeaderState extends State<Header> {
       child: const Text(
         'BranefMovies',
         style: TextStyle(
-            color: Colors.white, fontSize: 20, fontWeight: FontWeight.normal),
+            color: Colors.white,
+            fontSize: 40,
+            fontWeight: FontWeight.normal,
+            fontFamily: 'Romanesco'),
       ),
     );
   }

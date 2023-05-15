@@ -1,7 +1,7 @@
 import 'package:branef_movies/src/home/components/colors_standard.dart';
+import 'package:branef_movies/src/home/routes/app_routes.dart';
 import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
-import 'src/home/repositories/home_page.dart';
 
 void main() {
   runApp(
@@ -20,10 +20,10 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       locale: DevicePreview.locale(context),
-      initialRoute: '/',
       builder: DevicePreview.appBuilder,
       theme: ThemeData(primaryColor: backgroundColor),
-      home: const HomePage(),
+      initialRoute: '/',
+      routes: AppRoutes.generateRoutes(context),
     );
   }
 }
