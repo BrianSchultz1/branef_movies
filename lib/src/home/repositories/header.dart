@@ -15,7 +15,6 @@ class _HeaderState extends State<Header> {
       color: backgroundColor,
       child: Column(
         children: [
-          const SizedBox(height: 12),
           Center(
             child: _welcome(),
           )
