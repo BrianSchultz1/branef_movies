@@ -1,1 +1,0 @@
-// minha API fica armazenada aqui

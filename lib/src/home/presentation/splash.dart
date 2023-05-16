@@ -1,5 +1,5 @@
 import 'package:branef_movies/src/home/components/colors_standard.dart';
-import 'package:branef_movies/src/home/repositories/home_page.dart';
+import 'package:branef_movies/src/home/screens/sreen_home_page.dart';
 import 'package:flutter/material.dart';
 import 'dart:async';
 

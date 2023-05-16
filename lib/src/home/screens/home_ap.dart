@@ -14,11 +14,7 @@ class _HeaderState extends State<Header> {
     return Container(
       color: backgroundColor,
       child: Column(
-        children: [
-          Center(
-            child: _welcome(),
-          )
-        ],
+        children: [Center()],
       ),
     );
   }
