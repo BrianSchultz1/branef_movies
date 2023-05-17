@@ -31,19 +31,19 @@ class _MoviesDetailsState extends State<MoviesDetails> {
                 ),
           ),
           Container(
-            padding: const EdgeInsets.all(110),
+            padding: const EdgeInsets.all(100),
             child: const Column(
               children: [
                 Text(
-                  'Texto 1',
+                  'nome do filme',
                   style: TextStyle(color: whiteColor, fontSize: 48),
                 ),
                 Text(
-                  'Texto 2',
+                  'substitua pelo ano + "|" + categori + "|" + tempo do filme',
                   style: TextStyle(color: whiteColor, fontSize: 24),
                 ),
                 Text(
-                  'Texto 3',
+                  'substitua pelo detalhe do filme',
                   style: TextStyle(color: whiteColor, fontSize: 18),
                 ),
               ],

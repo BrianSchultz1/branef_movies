@@ -13,22 +13,8 @@ class _HeaderState extends State<Header> {
   Widget build(BuildContext context) {
     return Container(
       color: backgroundColor,
-      child: Column(
+      child: const Column(
         children: [Center()],
-      ),
-    );
-  }
-
-  _welcome() {
-    return Container(
-      margin: const EdgeInsets.only(left: 20, bottom: 20),
-      child: const Text(
-        'BranefMovies',
-        style: TextStyle(
-            color: Colors.white,
-            fontSize: 40,
-            fontWeight: FontWeight.normal,
-            fontFamily: 'Romanesco'),
       ),
     );
   }

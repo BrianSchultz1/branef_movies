@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import '../components/colors_standard.dart';
+import '../services/api_service.dart';
+import 'movie_details_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
 
   @override
+  // ignore: library_private_types_in_public_api
   _HomePageState createState() => _HomePageState();
 }
 
@@ -37,19 +40,32 @@ class _HomePageState extends State<HomePage> {
   }
 
   Widget _movies() {
-    return Column(
-      children: [
-        const SizedBox(height: 30),
-        _movieItem('Avengers: End Game', '2019 | 3h'),
-        const SizedBox(height: 30),
-        _movieItem('Avengers: End Game', '2019 | 3h'),
-        const SizedBox(height: 30),
-        _movieItem('Avengers: End Game', '2019 | 3h'),
-        const SizedBox(height: 30),
-        _movieItem('Avengers: End Game', '2019 | 3h'),
-        const SizedBox(height: 30),
-        _movieItem('Avengers: End Game', '2019 | 3h'),
-      ],
+    return FutureBuilder<MovieDetails?>(
+      future:
+          getMovieDetails(6), // Substitua "movieId" pelo ID do filme desejado
+      builder: (context, snapshot) {
+        if (snapshot.connectionState == ConnectionState.waiting) {
+          // Exibe um indicador de carregamento enquanto os detalhes estão sendo buscados
+          return const CircularProgressIndicator();
+        } else if (snapshot.hasError) {
+          // Exibe uma mensagem de erro caso ocorra um erro ao buscar os detalhes
+          return Text('Erro: ${snapshot.error}');
+        } else if (snapshot.hasData) {
+          // Exibe os detalhes do filme
+          final movieDetails = snapshot.data!;
+          return Column(
+            children: [
+              const SizedBox(height: 30),
+              _movieItem(movieDetails.title,
+                  '${movieDetails.releaseYear} | ${movieDetails.duration} min'),
+              const SizedBox(height: 30),
+              // Adicione mais _movieItem() para exibir outros filmes
+            ],
+          );
+        } else {
+          return const Text('Detalhes do filme não encontrados');
+        }
+      },
     );
   }
 

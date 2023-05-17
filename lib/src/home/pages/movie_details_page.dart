@@ -1,8 +1,8 @@
 class MovieDetails {
-  final String title;
-  final int releaseYear;
-  final int duration;
-  final double rating;
+  String title;
+  int releaseYear;
+  int duration;
+  double rating;
 
   MovieDetails(
       {required this.title,

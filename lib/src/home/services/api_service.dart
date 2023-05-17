@@ -1,9 +1,9 @@
 import 'package:http/http.dart' as http;
 import 'dart:convert';
-import '../screens/movie_det.dart';
+import '../pages/movie_details_page.dart';
 
-Future<MovieDetails> getMovieDetails(int movieId, int perPage) async {
-  const apiKey = '92617104f2646d905240d1f828861df6';
+Future<MovieDetails?> getMovieDetails(int movieId) async {
+  const apiKey = '82cf23d2188f966ff195559ba3b21c06';
   final url = 'https://api.themoviedb.org/3/movie/$movieId?api_key=$apiKey';
 
   final response = await http.get(Uri.parse(url));
@@ -11,9 +11,9 @@ Future<MovieDetails> getMovieDetails(int movieId, int perPage) async {
     final data = json.decode(response.body);
     final movieDetails = MovieDetails(
       title: data['title'],
-      releaseYear: data['release_year'],
-      duration: data['duration'],
-      rating: data['rating'],
+      releaseYear: int.parse(data['release_date'].substring(0, 4)),
+      duration: int.parse(data['runtime'].toString()),
+      rating: data['vote_average'].toDouble(),
     );
     return movieDetails;
   } else {

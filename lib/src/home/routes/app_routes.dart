@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
 import '../presentation/splash.dart';
-import '../screens/sreen_home_page.dart';
-import '../screens/screen_movies_details.dart';
+import '../pages/home_page.dart';
+import '../pages/movies_details_page.dart';
 
 class AppRoutes {
   static Map<String, WidgetBuilder> generateRoutes(BuildContext context) {
