@@ -10,10 +10,14 @@ Future<MovieDetails?> getMovieDetails(int movieId) async {
   if (response.statusCode == 200) {
     final data = json.decode(response.body);
     final movieDetails = MovieDetails(
+      id: data['id'],
       title: data['title'],
       releaseYear: int.parse(data['release_date'].substring(0, 4)),
       duration: int.parse(data['runtime'].toString()),
       rating: data['vote_average'].toDouble(),
+      imageUrl: 'https://image.tmdb.org/t/p/w500/${data['poster_path']}',
+      details: data[
+          'overview'], // Exemplo de detalhe adicionado (usando o campo 'overview')
     );
     return movieDetails;
   } else {

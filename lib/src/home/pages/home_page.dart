@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import '../components/colors_standard.dart';
 import '../services/api_service.dart';
 import 'movie_details_page.dart';
@@ -8,17 +9,63 @@ class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
 
   @override
-  // ignore: library_private_types_in_public_api
   _HomePageState createState() => _HomePageState();
 }
 
 class _HomePageState extends State<HomePage> {
+  int currentPage = 4;
+  int moviesPerPage = 50;
+  List<MovieDetails> movies = [];
+  bool isLoading = false;
+
+  @override
+  void initState() {
+    super.initState();
+    _loadMovies();
+  }
+
+  Future<void> _loadMovies() async {
+    if (isLoading) return;
+
+    setState(() {
+      isLoading = true;
+    });
+
+    try {
+      final movieStartId = (currentPage - 1) * moviesPerPage + 6;
+      final movieEndId = movieStartId + moviesPerPage - 1;
+      for (int movieId = movieStartId; movieId <= movieEndId; movieId++) {
+        final movieDetails = await getMovieDetails(movieId);
+        if (movieDetails != null) {
+          setState(() {
+            movies.add(movieDetails);
+          });
+        }
+      }
+      currentPage++;
+    } catch (e) {
+      print('Erro ao carregar os detalhes do filme: $e');
+    } finally {
+      setState(() {
+        isLoading = false;
+      });
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: backgroundColor,
       appBar: _appBar(),
-      body: _movies(),
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            const SizedBox(height: 30),
+            _buildMoviesList(),
+            const SizedBox(height: 30),
+          ],
+        ),
+      ),
     );
   }
 
@@ -39,69 +86,113 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  Widget _movies() {
-    return FutureBuilder<MovieDetails?>(
-      future:
-          getMovieDetails(6), // Substitua "movieId" pelo ID do filme desejado
-      builder: (context, snapshot) {
-        if (snapshot.connectionState == ConnectionState.waiting) {
-          // Exibe um indicador de carregamento enquanto os detalhes estão sendo buscados
-          return const CircularProgressIndicator();
-        } else if (snapshot.hasError) {
-          // Exibe uma mensagem de erro caso ocorra um erro ao buscar os detalhes
-          return Text('Erro: ${snapshot.error}');
-        } else if (snapshot.hasData) {
-          // Exibe os detalhes do filme
-          final movieDetails = snapshot.data!;
-          return Column(
-            children: [
-              const SizedBox(height: 30),
-              _movieItem(movieDetails.title,
-                  '${movieDetails.releaseYear} | ${movieDetails.duration} min'),
-              const SizedBox(height: 30),
-              // Adicione mais _movieItem() para exibir outros filmes
-            ],
-          );
-        } else {
-          return const Text('Detalhes do filme não encontrados');
-        }
-      },
+  Widget _buildMoviesList() {
+    return Container(
+      constraints: const BoxConstraints(
+          maxWidth: 500), // Defina a largura máxima desejada
+      child: ListView.builder(
+        shrinkWrap: true,
+        physics: const NeverScrollableScrollPhysics(),
+        itemCount: movies.length,
+        itemBuilder: (context, index) {
+          final movie = movies[index];
+          return _movieItem(movie);
+        },
+      ),
     );
   }
 
-  Widget _movieItem(String title, String details) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Column(
-          children: [
-            Text(
-              title,
-              style: const TextStyle(
-                color: whiteColor,
+  Widget _movieItem(MovieDetails movie) {
+    return Container(
+      margin: const EdgeInsets.symmetric(vertical: 15),
+      child: Center(
+        child: Container(
+          alignment: Alignment.center,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              SizedBox(
+                width: 82,
+                height: 122,
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(5),
+                  child: Image.network(
+                    movie.imageUrl,
+                    fit: BoxFit.cover,
+                  ),
+                ),
               ),
-            ),
-            const SizedBox(height: 10),
-            Text(
-              details,
-              style: const TextStyle(
-                color: whiteColor,
+              const SizedBox(width: 10),
+              Expanded(
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      movie.title,
+                      style: const TextStyle(
+                        color: whiteColor,
+                      ),
+                    ),
+                    const SizedBox(height: 10),
+                    RatingBar.builder(
+                      initialRating: movie.rating,
+                      minRating: 1,
+                      direction: Axis.horizontal,
+                      allowHalfRating: true,
+                      itemCount: 5,
+                      itemSize: 13,
+                      itemBuilder: (context, _) => const Icon(
+                        Icons.star,
+                        color: Colors.amber,
+                      ),
+                      onRatingUpdate: (rating) {},
+                    ),
+                    const SizedBox(height: 10),
+                    Text(
+                      '${movie.releaseYear} | ${movie.duration} min',
+                      style: const TextStyle(
+                        color: whiteColor,
+                      ),
+                    ),
+                    const SizedBox(height: 10),
+                    ElevatedButton(
+                      onPressed: () {
+                        Navigator.pushNamed(
+                          context,
+                          '/details',
+                          arguments: {
+                            'movieTitle': movie.title,
+                            'movieInfo':
+                                '${movie.releaseYear} | ${movie.duration} min',
+                            'imageUrl': movie.imageUrl,
+                          },
+                        );
+                      },
+                      style: ButtonStyle(
+                        backgroundColor:
+                            MaterialStateProperty.all<Color>(secondaryPink),
+                        minimumSize: MaterialStateProperty.all<Size>(
+                            const Size(107, 26)),
+                        shape:
+                            MaterialStateProperty.all<RoundedRectangleBorder>(
+                          RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                        ),
+                        elevation: MaterialStateProperty.all<double>(10),
+                        shadowColor:
+                            MaterialStateProperty.all<Color>(secondaryPink),
+                      ),
+                      child: const Text('Detalhes'),
+                    ),
+                  ],
+                ),
               ),
-            ),
-            const SizedBox(height: 10),
-            ElevatedButton(
-              onPressed: () {
-                Navigator.pushNamed(context, '/details');
-              },
-              style: ButtonStyle(
-                backgroundColor:
-                    MaterialStateProperty.all<Color>(secondaryPink),
-              ),
-              child: const Text('Detalhes'),
-            ),
-          ],
+            ],
+          ),
         ),
-      ],
+      ),
     );
   }
 }

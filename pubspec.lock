@@ -231,10 +231,18 @@ packages:
     dependency: "direct main"
     description:
       name: flutter_native_splash
-      sha256: af665ef80a213a9ed502845a3d7a61b9acca4100ee7e9f067a7440bc3acd6730
+      sha256: "02df24aec455c26428dadc637f20d4c548bda23ee2179479a8e8c39f1ecb75b3"
       url: "https://pub.dev"
     source: hosted
-    version: "2.2.19"
+    version: "2.3.0"
+  flutter_rating_bar:
+    dependency: "direct main"
+    description:
+      name: flutter_rating_bar
+      sha256: d2af03469eac832c591a1eba47c91ecc871fe5708e69967073c043b2d775ed93
+      url: "https://pub.dev"
+    source: hosted
+    version: "4.0.1"
   flutter_test:
     dependency: "direct dev"
     description: flutter
@@ -377,10 +385,10 @@ packages:
     dependency: transitive
     description:
       name: material_color_utilities
-      sha256: "9528f2f296073ff54cb9fee677df673ace1218163c3bc7628093e7eed5203d41"
+      sha256: "586678f20e112219ed0f73215f01bcdf1d769824ba2ebae45ad918a9bfde9bdb"
       url: "https://pub.dev"
     source: hosted
-    version: "0.5.0"
+    version: "0.3.0"
   meta:
     dependency: transitive
     description:
@@ -827,5 +835,5 @@ packages:
     source: hosted
     version: "3.1.2"
 sdks:
-  dart: ">=3.1.0-94.0.dev <4.0.0"
+  dart: ">=3.0.0 <4.0.0"
   flutter: ">=3.3.0"

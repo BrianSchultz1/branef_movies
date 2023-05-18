@@ -1,52 +1,80 @@
 import 'package:branef_movies/src/home/components/colors_standard.dart';
 import 'package:flutter/material.dart';
 
-class MoviesDetails extends StatefulWidget {
+class MoviesDetails extends StatelessWidget {
   const MoviesDetails({Key? key}) : super(key: key);
 
   @override
-  State<MoviesDetails> createState() => _MoviesDetailsState();
-}
-
-class _MoviesDetailsState extends State<MoviesDetails> {
-  @override
   Widget build(BuildContext context) {
+    final args =
+        ModalRoute.of(context)?.settings.arguments as Map<String, dynamic>;
+    final movieTitle = args['movieTitle'] as String;
+    final movieInfo = args['movieInfo'] as String;
+    final imageUrl = args['imageUrl'] as String;
+
     return Scaffold(
       backgroundColor: backgroundColor,
-      appBar: AppBar(
-        backgroundColor: backgroundColor,
-        elevation: 0,
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back),
-          onPressed: () {
-            Navigator.pop(context);
-          },
-        ),
-      ),
-      body: Column(
+      body: Stack(
         children: [
-          Expanded(
-            child: Container(
-                // Coloque aqui o widget da imagem
-                ),
+          Container(
+            height: MediaQuery.of(context).size.height / 1.6,
+            decoration: BoxDecoration(
+              image: DecorationImage(
+                image: NetworkImage(imageUrl),
+                fit: BoxFit.cover,
+              ),
+            ),
           ),
           Container(
-            padding: const EdgeInsets.all(100),
-            child: const Column(
-              children: [
-                Text(
-                  'nome do filme',
-                  style: TextStyle(color: whiteColor, fontSize: 48),
-                ),
-                Text(
-                  'substitua pelo ano + "|" + categori + "|" + tempo do filme',
-                  style: TextStyle(color: whiteColor, fontSize: 24),
-                ),
-                Text(
-                  'substitua pelo detalhe do filme',
-                  style: TextStyle(color: whiteColor, fontSize: 18),
-                ),
-              ],
+            height: MediaQuery.of(context).size.height / 1.6,
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                colors: [
+                  Colors.transparent,
+                  backgroundColor,
+                ],
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter,
+              ),
+            ),
+          ),
+          Positioned(
+            top: MediaQuery.of(context).padding.top,
+            left: 10,
+            child: IconButton(
+              icon: const Icon(
+                Icons.arrow_back,
+                color: whiteColor,
+              ),
+              onPressed: () {
+                Navigator.pop(context);
+              },
+            ),
+          ),
+          Padding(
+            padding: EdgeInsets.only(
+              top: MediaQuery.of(context).size.height / 2,
+            ),
+            child: Container(
+              padding: const EdgeInsets.all(16),
+              child: Column(
+                children: [
+                  Text(
+                    movieTitle,
+                    style: const TextStyle(color: whiteColor, fontSize: 28),
+                  ),
+                  Text(
+                    movieInfo,
+                    style: const TextStyle(color: whiteColor, fontSize: 24),
+                  ),
+                  const SizedBox(height: 20),
+                  const Text(
+                    'Detalhes do Filme',
+                    style: TextStyle(color: whiteColor, fontSize: 18),
+                  ),
+                  // Adicione aqui os detalhes adicionais do filme
+                ],
+              ),
             ),
           ),
         ],

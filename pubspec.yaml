@@ -19,7 +19,8 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 version: 1.0.0+1
 
 environment:
-  sdk: '>=3.1.0-94.0.dev <4.0.0'
+  sdk: '>=3.0.0 <4.0.0'
+
 
 # Dependencies specify other packages that your package needs in order to work.
 # To automatically upgrade your package dependencies to the latest versions
@@ -45,6 +46,7 @@ dependencies:
   mocktail: ^0.3.0
   flutter_native_splash: ^2.2.19
   flutter_launcher_icons: ^0.13.1
+  flutter_rating_bar: ^4.0.1
 
 dev_dependencies:
   flutter_test:
