@@ -96,102 +96,117 @@ class _HomePageState extends State<HomePage> {
         itemCount: movies.length,
         itemBuilder: (context, index) {
           final movie = movies[index];
-          return _movieItem(movie);
+          return Column(
+            children: [
+              _movieItem(movie),
+              const SizedBox(height: 10),
+              _buildLine(),
+              const SizedBox(height: 10),
+            ],
+          );
         },
       ),
     );
   }
 
   Widget _movieItem(MovieDetails movie) {
-    return Container(
-      margin: const EdgeInsets.symmetric(vertical: 15),
-      child: Center(
-        child: Container(
-          alignment: Alignment.center,
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
+    return Padding(
+      padding: const EdgeInsets.only(
+          left: 50), // Adiciona espaço à esquerda da imagem
+      child: Row(
+        children: [
+          SizedBox(
+            width: 82,
+            height: 122,
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(5),
+              child: Image.network(
+                movie.imageUrl,
+                fit: BoxFit.cover,
+              ),
+            ),
+          ),
+          const SizedBox(width: 10),
+          Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              SizedBox(
-                width: 82,
-                height: 122,
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(5),
-                  child: Image.network(
-                    movie.imageUrl,
-                    fit: BoxFit.cover,
-                  ),
+              Text(
+                movie.title,
+                style: const TextStyle(
+                    color: whiteColor, fontFamily: 'Roboto', fontSize: 16),
+              ),
+              const SizedBox(height: 10),
+              RatingBar.builder(
+                initialRating: movie.rating,
+                minRating: 1,
+                direction: Axis.horizontal,
+                allowHalfRating: true,
+                itemCount: 5,
+                itemSize: 13,
+                itemBuilder: (context, _) => const Icon(
+                  Icons.star,
+                  color: Colors.amber,
+                ),
+                onRatingUpdate: (rating) {},
+              ),
+              const SizedBox(height: 10),
+              Text(
+                '${movie.releaseYear} | ${movie.duration} min',
+                style: const TextStyle(
+                  color: whiteColor,
                 ),
               ),
-              const SizedBox(width: 10),
-              Expanded(
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      movie.title,
-                      style: const TextStyle(
-                        color: whiteColor,
-                      ),
+              const SizedBox(height: 10),
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.pushNamed(
+                    context,
+                    '/details',
+                    arguments: {
+                      'movieTitle': movie.title,
+                      'movieInfo':
+                          '${movie.releaseYear} | ${movie.duration} min',
+                      'imageUrl': movie.imageUrl,
+                      'movieDetails': movie.details
+                    },
+                  );
+                },
+                style: ButtonStyle(
+                  backgroundColor:
+                      MaterialStateProperty.all<Color>(secondaryPink),
+                  minimumSize:
+                      MaterialStateProperty.all<Size>(const Size(107, 26)),
+                  shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                    RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10),
                     ),
-                    const SizedBox(height: 10),
-                    RatingBar.builder(
-                      initialRating: movie.rating,
-                      minRating: 1,
-                      direction: Axis.horizontal,
-                      allowHalfRating: true,
-                      itemCount: 5,
-                      itemSize: 13,
-                      itemBuilder: (context, _) => const Icon(
-                        Icons.star,
-                        color: Colors.amber,
-                      ),
-                      onRatingUpdate: (rating) {},
-                    ),
-                    const SizedBox(height: 10),
-                    Text(
-                      '${movie.releaseYear} | ${movie.duration} min',
-                      style: const TextStyle(
-                        color: whiteColor,
-                      ),
-                    ),
-                    const SizedBox(height: 10),
-                    ElevatedButton(
-                      onPressed: () {
-                        Navigator.pushNamed(
-                          context,
-                          '/details',
-                          arguments: {
-                            'movieTitle': movie.title,
-                            'movieInfo':
-                                '${movie.releaseYear} | ${movie.duration} min',
-                            'imageUrl': movie.imageUrl,
-                            'movieDetails': movie.details
-                          },
-                        );
-                      },
-                      style: ButtonStyle(
-                        backgroundColor:
-                            MaterialStateProperty.all<Color>(secondaryPink),
-                        minimumSize: MaterialStateProperty.all<Size>(
-                            const Size(107, 26)),
-                        shape:
-                            MaterialStateProperty.all<RoundedRectangleBorder>(
-                          RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                        ),
-                        elevation: MaterialStateProperty.all<double>(10),
-                        shadowColor:
-                            MaterialStateProperty.all<Color>(secondaryPink),
-                      ),
-                      child: const Text('Detalhes'),
-                    ),
-                  ],
+                  ),
+                  elevation: MaterialStateProperty.all<double>(10),
+                  shadowColor: MaterialStateProperty.all<Color>(secondaryPink),
                 ),
+                child: const Text('Detalhes'),
               ),
             ],
           ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildLine() {
+    return Container(
+      height: 1,
+      decoration: const BoxDecoration(
+        gradient: LinearGradient(
+          begin: Alignment.centerLeft,
+          end: Alignment.centerRight,
+          colors: [
+            Color.fromARGB(0, 145, 145, 145),
+            Colors.white,
+            Color.fromARGB(0, 145, 145, 145),
+          ],
+          stops: [0.1, 0.5, 1.0],
         ),
       ),
     );

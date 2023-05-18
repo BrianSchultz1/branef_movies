@@ -54,7 +54,7 @@ class MoviesDetails extends StatelessWidget {
           ),
           Padding(
             padding: EdgeInsets.only(
-              top: MediaQuery.of(context).size.height / 2,
+              top: MediaQuery.of(context).size.height / 1.9,
             ),
             child: Container(
               padding: const EdgeInsets.all(16),
@@ -63,21 +63,38 @@ class MoviesDetails extends StatelessWidget {
                   Center(
                     child: Text(
                       movieTitle,
-                      style: const TextStyle(color: whiteColor, fontSize: 28),
+                      style: const TextStyle(
+                          color: whiteColor,
+                          fontSize: 32,
+                          fontFamily: 'Roboto'),
                     ),
                   ),
+                  const SizedBox(height: 5),
                   Center(
-                    child: Text(
-                      movieInfo,
-                      style: const TextStyle(color: whiteColor, fontSize: 24),
+                    child: Opacity(
+                      opacity: 0.8,
+                      child: Text(
+                        movieInfo,
+                        style: const TextStyle(
+                            color: whiteColor,
+                            fontSize: 24,
+                            fontFamily: 'Roboto'),
+                      ),
                     ),
                   ),
                   const SizedBox(height: 20),
                   SingleChildScrollView(
                     child: Center(
-                      child: Text(
-                        movieDetails,
-                        style: const TextStyle(color: whiteColor, fontSize: 14),
+                      child: Opacity(
+                        opacity: 0.5,
+                        child: Text(
+                          movieDetails,
+                          style: const TextStyle(
+                            color: whiteColor,
+                            fontSize: 18,
+                            fontFamily: 'Roboto-condensed',
+                          ),
+                        ),
                       ),
                     ),
                   ),

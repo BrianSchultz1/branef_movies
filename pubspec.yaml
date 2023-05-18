@@ -94,6 +94,9 @@ flutter:
     - family: Staatliches
       fonts:
         - asset: assets\fonts\Staatliches-Regular.ttf
+    - family: Roboto
+      fonts:
+        - asset: assets/fonts/RobotoCondensed-Regular.ttf
 
   #   - family: Trajan Pro
   #     fonts:
