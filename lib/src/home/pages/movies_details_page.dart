@@ -11,6 +11,7 @@ class MoviesDetails extends StatelessWidget {
     final movieTitle = args['movieTitle'] as String;
     final movieInfo = args['movieInfo'] as String;
     final imageUrl = args['imageUrl'] as String;
+    final movieDetails = args['movieDetails'] as String;
 
     return Scaffold(
       backgroundColor: backgroundColor,
@@ -26,7 +27,7 @@ class MoviesDetails extends StatelessWidget {
             ),
           ),
           Container(
-            height: MediaQuery.of(context).size.height / 1.6,
+            height: MediaQuery.of(context).size.height / 1.59,
             decoration: BoxDecoration(
               gradient: LinearGradient(
                 colors: [
@@ -59,20 +60,27 @@ class MoviesDetails extends StatelessWidget {
               padding: const EdgeInsets.all(16),
               child: Column(
                 children: [
-                  Text(
-                    movieTitle,
-                    style: const TextStyle(color: whiteColor, fontSize: 28),
+                  Center(
+                    child: Text(
+                      movieTitle,
+                      style: const TextStyle(color: whiteColor, fontSize: 28),
+                    ),
                   ),
-                  Text(
-                    movieInfo,
-                    style: const TextStyle(color: whiteColor, fontSize: 24),
+                  Center(
+                    child: Text(
+                      movieInfo,
+                      style: const TextStyle(color: whiteColor, fontSize: 24),
+                    ),
                   ),
                   const SizedBox(height: 20),
-                  const Text(
-                    'Detalhes do Filme',
-                    style: TextStyle(color: whiteColor, fontSize: 18),
+                  SingleChildScrollView(
+                    child: Center(
+                      child: Text(
+                        movieDetails,
+                        style: const TextStyle(color: whiteColor, fontSize: 14),
+                      ),
+                    ),
                   ),
-                  // Adicione aqui os detalhes adicionais do filme
                 ],
               ),
             ),

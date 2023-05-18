@@ -166,6 +166,7 @@ class _HomePageState extends State<HomePage> {
                             'movieInfo':
                                 '${movie.releaseYear} | ${movie.duration} min',
                             'imageUrl': movie.imageUrl,
+                            'movieDetails': movie.details
                           },
                         );
                       },

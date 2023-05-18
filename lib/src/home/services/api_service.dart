@@ -16,8 +16,7 @@ Future<MovieDetails?> getMovieDetails(int movieId) async {
       duration: int.parse(data['runtime'].toString()),
       rating: data['vote_average'].toDouble(),
       imageUrl: 'https://image.tmdb.org/t/p/w500/${data['poster_path']}',
-      details: data[
-          'overview'], // Exemplo de detalhe adicionado (usando o campo 'overview')
+      details: data['overview'],
     );
     return movieDetails;
   } else {

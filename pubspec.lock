@@ -285,6 +285,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "4.0.4"
+  hero_animation:
+    dependency: "direct main"
+    description:
+      name: hero_animation
+      sha256: "01892d2b0dffb382014d7dabb8bea09fc389beb02489179c6d1b500284d8d2ef"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.0.0+3"
   html:
     dependency: transitive
     description:
