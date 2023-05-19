@@ -114,16 +114,18 @@ class _HomePageState extends State<HomePage> {
       padding: const EdgeInsets.only(left: 50),
       child: Row(
         children: [
-          Hero(
-            tag: movie.imageUrl, // Defina uma tag única para cada imagem
-            child: SizedBox(
-              width: 82,
-              height: 122,
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(5),
-                child: Image.network(
-                  movie.imageUrl,
-                  fit: BoxFit.cover,
+          HeroMode(
+            child: Hero(
+              tag: movie.imageUrl,
+              child: SizedBox(
+                width: 82,
+                height: 122,
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(5),
+                  child: Image.network(
+                    movie.imageUrl,
+                    fit: BoxFit.cover,
+                  ),
                 ),
               ),
             ),
