@@ -111,18 +111,20 @@ class _HomePageState extends State<HomePage> {
 
   Widget _movieItem(MovieDetails movie) {
     return Padding(
-      padding: const EdgeInsets.only(
-          left: 50), // Adiciona espaço à esquerda da imagem
+      padding: const EdgeInsets.only(left: 50),
       child: Row(
         children: [
-          SizedBox(
-            width: 82,
-            height: 122,
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(5),
-              child: Image.network(
-                movie.imageUrl,
-                fit: BoxFit.cover,
+          Hero(
+            tag: movie.imageUrl, // Defina uma tag única para cada imagem
+            child: SizedBox(
+              width: 82,
+              height: 122,
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(5),
+                child: Image.network(
+                  movie.imageUrl,
+                  fit: BoxFit.cover,
+                ),
               ),
             ),
           ),

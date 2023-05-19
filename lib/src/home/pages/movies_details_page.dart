@@ -2,17 +2,21 @@ import 'package:branef_movies/src/home/components/colors_standard.dart';
 import 'package:flutter/material.dart';
 
 class MoviesDetails extends StatelessWidget {
-  const MoviesDetails({Key? key}) : super(key: key);
+  final String movieTitle;
+  final String movieInfo;
+  final String imageUrl;
+  final String movieDetails;
+
+  const MoviesDetails({
+    super.key,
+    required this.movieTitle,
+    required this.movieInfo,
+    required this.imageUrl,
+    required this.movieDetails,
+  });
 
   @override
   Widget build(BuildContext context) {
-    final args =
-        ModalRoute.of(context)?.settings.arguments as Map<String, dynamic>;
-    final movieTitle = args['movieTitle'] as String;
-    final movieInfo = args['movieInfo'] as String;
-    final imageUrl = args['imageUrl'] as String;
-    final movieDetails = args['movieDetails'] as String;
-
     return Scaffold(
       backgroundColor: backgroundColor,
       body: Stack(
