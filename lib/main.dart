@@ -9,14 +9,16 @@ void main() {
   runApp(
     DevicePreview(
       enabled: true,
-      builder: (context) => MyApp(),
+      builder: (context) => BlocProvider<AppBloc>(
+        create: (context) => AppBloc(),
+        child: MyApp(),
+      ),
     ),
   );
 }
 
 class MyApp extends StatelessWidget {
   final AppBloc appBloc = AppBloc();
-
   MyApp({super.key});
 
   @override

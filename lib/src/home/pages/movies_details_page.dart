@@ -8,12 +8,12 @@ class MoviesDetails extends StatelessWidget {
   final String movieDetails;
 
   const MoviesDetails({
-    super.key,
+    Key? key,
     required this.movieTitle,
     required this.movieInfo,
     required this.imageUrl,
     required this.movieDetails,
-  });
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

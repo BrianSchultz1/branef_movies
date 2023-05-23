@@ -1,30 +1,40 @@
 import 'package:bloc/bloc.dart';
-import '../../home/pages/movie_details_page.dart';
+import 'package:equatable/equatable.dart';
 
 enum AppEvent { increment, decrement }
 
-class AppBloc extends Bloc<AppEvent, int> {
-  AppBloc() : super(0);
+class AppBloc extends Bloc<AppEvent, AppState> {
+  AppBloc() : super(AppState.initial());
 
-  Stream<int> mapEventToState(AppEvent event) async* {
+  Stream<AppState> mapEventToState(AppEvent event) async* {
     switch (event) {
       case AppEvent.increment:
-        yield state + 1;
+        yield state.copyWith(movies: state.movies + 1);
         break;
       case AppEvent.decrement:
-        yield state - 1;
+        yield state.copyWith(movies: state.movies - 1);
         break;
     }
   }
 }
 
-class AppState {
-  final List<MovieDetails> movies;
+class AppState extends Equatable {
+  final int movies;
   final bool isLoading;
 
-  AppState({required this.movies, required this.isLoading});
+  const AppState({required this.movies, required this.isLoading});
 
   factory AppState.initial() {
-    return AppState(movies: [], isLoading: false);
+    return const AppState(movies: 0, isLoading: false);
   }
+
+  AppState copyWith({int? movies, bool? isLoading}) {
+    return AppState(
+      movies: movies ?? this.movies,
+      isLoading: isLoading ?? this.isLoading,
+    );
+  }
+
+  @override
+  List<Object?> get props => [movies, isLoading];
 }

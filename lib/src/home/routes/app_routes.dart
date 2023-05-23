@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import '../presentation/splash.dart';
 import '../pages/home_page.dart';
 import '../pages/movies_details_page.dart';
