@@ -38,18 +38,16 @@ class MovieList {
       padding: const EdgeInsets.only(left: 50),
       child: Row(
         children: [
-          HeroMode(
-            child: Hero(
-              tag: movie.imageUrl,
-              child: SizedBox(
-                width: 82,
-                height: 122,
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(5),
-                  child: Image.network(
-                    movie.imageUrl,
-                    fit: BoxFit.cover,
-                  ),
+          Hero(
+            tag: movie.imageUrl,
+            child: SizedBox(
+              width: 82,
+              height: 122,
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(5),
+                child: Image.network(
+                  movie.imageUrl,
+                  fit: BoxFit.cover,
                 ),
               ),
             ),

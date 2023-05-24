@@ -1,5 +1,5 @@
-import 'package:branef_movies/src/home/components/colors_standard.dart';
-import 'package:branef_movies/src/home/routes/app_routes.dart';
+import 'package:branef_movies/src/models/components/colors_standard.dart';
+import 'package:branef_movies/src/models/home/routes/app_routes.dart';
 import 'package:branef_movies/src/shared/blocs/movies_bloc.dart';
 import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';

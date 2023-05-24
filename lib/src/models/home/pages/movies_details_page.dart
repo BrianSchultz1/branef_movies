@@ -26,12 +26,15 @@ class MoviesDetails extends StatelessWidget {
           ),
           child: Stack(
             children: [
-              Container(
-                height: MediaQuery.of(context).size.height / 1.6,
-                decoration: BoxDecoration(
-                  image: DecorationImage(
-                    image: NetworkImage(imageUrl),
-                    fit: BoxFit.cover,
+              Hero(
+                tag: imageUrl,
+                child: Container(
+                  height: MediaQuery.of(context).size.height / 1.6,
+                  decoration: BoxDecoration(
+                    image: DecorationImage(
+                      image: NetworkImage(imageUrl),
+                      fit: BoxFit.cover,
+                    ),
                   ),
                 ),
               ),
