@@ -1,19 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
-import '../components/colors_standard.dart';
-import 'movie_details_page.dart';
+import '../../components/colors_standard.dart';
+import 'movie_details.dart';
 
 class MoviesList extends StatelessWidget {
   final List<MovieDetails> movies;
 
-  const MoviesList({required this.movies});
+  const MoviesList({super.key, required this.movies});
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      constraints: const BoxConstraints(
-          maxWidth: 500), // Defina a largura máxima desejada
+      constraints: const BoxConstraints(maxWidth: 500),
       child: ListView.builder(
         shrinkWrap: true,
         physics: const NeverScrollableScrollPhysics(),
@@ -33,6 +32,7 @@ class MoviesList extends StatelessWidget {
     );
   }
 
+//mudar essa parte, removendo o widget!!!
   Widget _buildMovieItem(BuildContext context, MovieDetails movie) {
     return Padding(
       padding: const EdgeInsets.only(left: 50),

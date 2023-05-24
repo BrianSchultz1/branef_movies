@@ -1,5 +1,6 @@
 import 'package:equatable/equatable.dart';
 
+//organnizar state do bloc
 class AppState extends Equatable {
   final int movies;
   final bool isLoading;

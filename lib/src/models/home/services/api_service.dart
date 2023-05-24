@@ -1,6 +1,6 @@
 import 'package:http/http.dart' as http;
 import 'dart:convert';
-import '../pages/movie_details_page.dart';
+import '../pages/movie_details.dart';
 
 Future<MovieDetails?> getMovieDetails(int movieId) async {
   const apiKey = '82cf23d2188f966ff195559ba3b21c06';

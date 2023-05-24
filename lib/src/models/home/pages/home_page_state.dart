@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import '../components/colors_standard.dart';
+import '../../components/colors_standard.dart';
 import '../services/api_service.dart';
 import 'home_page.dart';
 import 'movie_list.dart';
@@ -37,6 +37,7 @@ class HomePageState extends State<HomePage> {
       }
       currentPage++;
     } catch (e) {
+      // ignore: avoid_print
       print('Erro ao carregar os detalhes do filme: $e');
     } finally {
       setState(() {

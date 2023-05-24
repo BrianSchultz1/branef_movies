@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
-import '../components/colors_standard.dart';
-import 'movie_details_page.dart';
+import '../../components/colors_standard.dart';
+import 'movie_details.dart';
 
 class MovieList {
   List<MovieDetails> movies = [];
@@ -12,8 +12,7 @@ class MovieList {
 
   Widget buildMoviesList(BuildContext context) {
     return Container(
-      constraints: const BoxConstraints(
-          maxWidth: 500), // Defina a largura máxima desejada
+      constraints: const BoxConstraints(maxWidth: 500),
       child: ListView.builder(
         shrinkWrap: true,
         physics: const NeverScrollableScrollPhysics(),
