@@ -29,7 +29,7 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         locale: DevicePreview.locale(context),
         builder: DevicePreview.appBuilder,
-        theme: ThemeData(primaryColor: backgroundColor),
+        theme: ThemeData(primaryColor: ColorStandart.backgroundColor),
         initialRoute: '/',
         routes: AppRoutes.generateRoutes(context),
       ),

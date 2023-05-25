@@ -62,7 +62,7 @@ class MoviesList extends StatelessWidget {
               Text(
                 movie.title,
                 style: const TextStyle(
-                  color: whiteColor,
+                  color: ColorStandart.whiteColor,
                   fontFamily: 'Roboto',
                   fontSize: 16,
                 ),
@@ -85,7 +85,7 @@ class MoviesList extends StatelessWidget {
               Text(
                 '${movie.releaseYear} | ${movie.duration} min',
                 style: const TextStyle(
-                  color: whiteColor,
+                  color: ColorStandart.whiteColor,
                 ),
               ),
               const SizedBox(height: 10),
@@ -104,8 +104,8 @@ class MoviesList extends StatelessWidget {
                   );
                 },
                 style: ButtonStyle(
-                  backgroundColor:
-                      MaterialStateProperty.all<Color>(secondaryPink),
+                  backgroundColor: MaterialStateProperty.all<Color>(
+                      ColorStandart.secondaryPink),
                   minimumSize:
                       MaterialStateProperty.all<Size>(const Size(107, 26)),
                   shape: MaterialStateProperty.all<RoundedRectangleBorder>(
@@ -114,7 +114,8 @@ class MoviesList extends StatelessWidget {
                     ),
                   ),
                   elevation: MaterialStateProperty.all<double>(10),
-                  shadowColor: MaterialStateProperty.all<Color>(secondaryPink),
+                  shadowColor: MaterialStateProperty.all<Color>(
+                      ColorStandart.secondaryPink),
                 ),
                 child: const Text('Detalhes'),
               ),

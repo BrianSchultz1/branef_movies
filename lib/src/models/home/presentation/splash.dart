@@ -29,7 +29,7 @@ class _SplashState extends State<Splash> {
     return Scaffold(
       body: Container(
         padding: const EdgeInsets.symmetric(horizontal: 75),
-        color: backgroundColor,
+        color: ColorStandart.backgroundColor,
         child: const Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -38,7 +38,7 @@ class _SplashState extends State<Splash> {
                 textAlign: TextAlign.center,
                 "BranefMovies",
                 style: TextStyle(
-                  color: whiteColor,
+                  color: ColorStandart.whiteColor,
                   fontSize: 60,
                   fontWeight: FontWeight.normal,
                   fontFamily: 'Romanesco',
@@ -49,7 +49,7 @@ class _SplashState extends State<Splash> {
                 textAlign: TextAlign.center,
                 "Watch and find movies that bring your mood back",
                 style: TextStyle(
-                  color: whiteColor,
+                  color: ColorStandart.whiteColor,
                   fontSize: 24,
                   fontWeight: FontWeight.normal,
                   fontFamily: 'Staatliches',

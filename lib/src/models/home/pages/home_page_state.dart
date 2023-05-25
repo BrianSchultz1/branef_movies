@@ -49,7 +49,7 @@ class HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: backgroundColor,
+      backgroundColor: ColorStandart.backgroundColor,
       appBar: _appBar(),
       body: SingleChildScrollView(
         child: Column(
@@ -65,7 +65,7 @@ class HomePageState extends State<HomePage> {
 
   PreferredSizeWidget _appBar() {
     return AppBar(
-      backgroundColor: backgroundColor,
+      backgroundColor: ColorStandart.backgroundColor,
       elevation: 2,
       systemOverlayStyle: SystemUiOverlayStyle.dark,
       title: const Text(

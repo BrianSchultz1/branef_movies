@@ -59,7 +59,9 @@ class MovieList {
               Text(
                 movie.title,
                 style: const TextStyle(
-                    color: whiteColor, fontFamily: 'Roboto', fontSize: 16),
+                    color: ColorStandart.whiteColor,
+                    fontFamily: 'Roboto',
+                    fontSize: 16),
               ),
               const SizedBox(height: 10),
               RatingBar.builder(
@@ -79,7 +81,7 @@ class MovieList {
               Text(
                 '${movie.releaseYear} | ${movie.duration} min',
                 style: const TextStyle(
-                  color: whiteColor,
+                  color: ColorStandart.whiteColor,
                 ),
               ),
               const SizedBox(height: 10),
@@ -98,8 +100,8 @@ class MovieList {
                   );
                 },
                 style: ButtonStyle(
-                  backgroundColor:
-                      MaterialStateProperty.all<Color>(secondaryPink),
+                  backgroundColor: MaterialStateProperty.all<Color>(
+                      ColorStandart.secondaryPink),
                   minimumSize:
                       MaterialStateProperty.all<Size>(const Size(107, 26)),
                   shape: MaterialStateProperty.all<RoundedRectangleBorder>(
@@ -108,7 +110,8 @@ class MovieList {
                     ),
                   ),
                   elevation: MaterialStateProperty.all<double>(10),
-                  shadowColor: MaterialStateProperty.all<Color>(secondaryPink),
+                  shadowColor: MaterialStateProperty.all<Color>(
+                      ColorStandart.secondaryPink),
                 ),
                 child: const Text('Detalhes'),
               ),

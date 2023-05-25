@@ -18,7 +18,7 @@ class MoviesDetails extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: backgroundColor,
+      backgroundColor: ColorStandart.backgroundColor,
       body: SingleChildScrollView(
         child: ConstrainedBox(
           constraints: BoxConstraints(
@@ -44,7 +44,7 @@ class MoviesDetails extends StatelessWidget {
                   gradient: LinearGradient(
                     colors: [
                       Colors.transparent,
-                      backgroundColor,
+                      ColorStandart.backgroundColor,
                     ],
                     begin: Alignment.topCenter,
                     end: Alignment.bottomCenter,
@@ -57,7 +57,7 @@ class MoviesDetails extends StatelessWidget {
                 child: IconButton(
                   icon: const Icon(
                     Icons.arrow_back,
-                    color: whiteColor,
+                    color: ColorStandart.whiteColor,
                   ),
                   onPressed: () {
                     Navigator.pop(context);
@@ -76,7 +76,7 @@ class MoviesDetails extends StatelessWidget {
                       Text(
                         movieTitle,
                         style: const TextStyle(
-                          color: whiteColor,
+                          color: ColorStandart.whiteColor,
                           fontSize: 32,
                           fontFamily: 'Roboto',
                         ),
@@ -87,7 +87,7 @@ class MoviesDetails extends StatelessWidget {
                         child: Text(
                           movieInfo,
                           style: const TextStyle(
-                            color: whiteColor,
+                            color: ColorStandart.whiteColor,
                             fontSize: 24,
                             fontFamily: 'Roboto',
                           ),
@@ -100,7 +100,7 @@ class MoviesDetails extends StatelessWidget {
                           child: Text(
                             movieDetails,
                             style: const TextStyle(
-                              color: whiteColor,
+                              color: ColorStandart.whiteColor,
                               fontSize: 18,
                               fontFamily: 'Roboto-condensed',
                             ),
