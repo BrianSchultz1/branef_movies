@@ -59,7 +59,7 @@ class MovieList {
               Text(
                 movie.title,
                 style: const TextStyle(
-                    color: ColorStandart.whiteColor,
+                    color: ColorStandard.whiteColor,
                     fontFamily: 'Roboto',
                     fontSize: 16),
               ),
@@ -81,7 +81,7 @@ class MovieList {
               Text(
                 '${movie.releaseYear} | ${movie.duration} min',
                 style: const TextStyle(
-                  color: ColorStandart.whiteColor,
+                  color: ColorStandard.whiteColor,
                 ),
               ),
               const SizedBox(height: 10),
@@ -101,7 +101,7 @@ class MovieList {
                 },
                 style: ButtonStyle(
                   backgroundColor: MaterialStateProperty.all<Color>(
-                      ColorStandart.secondaryPink),
+                      ColorStandard.secondaryPink),
                   minimumSize:
                       MaterialStateProperty.all<Size>(const Size(107, 26)),
                   shape: MaterialStateProperty.all<RoundedRectangleBorder>(
@@ -111,7 +111,7 @@ class MovieList {
                   ),
                   elevation: MaterialStateProperty.all<double>(10),
                   shadowColor: MaterialStateProperty.all<Color>(
-                      ColorStandart.secondaryPink),
+                      ColorStandard.secondaryPink),
                 ),
                 child: const Text('Detalhes'),
               ),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+
 import '../../components/colors_standard.dart';
 import '../services/api_service.dart';
 import 'home_page.dart';
@@ -28,14 +29,8 @@ class HomePageState extends State<HomePage> {
       final movieStartId = (currentPage - 1) * moviesPerPage + 6;
       final movieEndId = movieStartId + moviesPerPage - 1;
       for (int movieId = movieStartId; movieId <= movieEndId; movieId++) {
-        final movieDetails = await getMovieDetails(movieId);
-        if (movieDetails != null) {
-          setState(() {
-            movieList.addMovie(movieDetails);
-          });
-        }
+        await _loadMovieDetails(movieId);
       }
-      currentPage++;
     } catch (e) {
       // ignore: avoid_print
       print('Erro ao carregar os detalhes do filme: $e');
@@ -46,10 +41,20 @@ class HomePageState extends State<HomePage> {
     }
   }
 
+//método para recarregar os detalhes dos filmes
+  Future<void> _loadMovieDetails(int movieId) async {
+    final movieDetails = await getMovieDetails(movieId);
+    if (movieDetails != null) {
+      setState(() {
+        movieList.addMovie(movieDetails);
+      });
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: ColorStandart.backgroundColor,
+      backgroundColor: ColorStandard.backgroundColor,
       appBar: _appBar(),
       body: SingleChildScrollView(
         child: Column(
@@ -65,7 +70,7 @@ class HomePageState extends State<HomePage> {
 
   PreferredSizeWidget _appBar() {
     return AppBar(
-      backgroundColor: ColorStandart.backgroundColor,
+      backgroundColor: ColorStandard.backgroundColor,
       elevation: 2,
       systemOverlayStyle: SystemUiOverlayStyle.dark,
       title: const Text(
