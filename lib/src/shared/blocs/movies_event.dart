@@ -1,2 +1,23 @@
+import 'package:http/http.dart';
+
 enum AppEvent { increment, decrement }
-//organizar state do event
+
+abstract class ClientEvent {}
+
+class LoadClieteEvent extends ClientEvent {}
+
+class AddClieteEvent extends ClientEvent {
+  Client client;
+
+  AddClieteEvent({
+    required this.client,
+  });
+}
+
+class RemoveClieteEvent extends ClientEvent {
+  Client client;
+
+  RemoveClieteEvent({
+    required this.client,
+  });
+}
