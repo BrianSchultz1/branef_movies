@@ -7,10 +7,11 @@ import 'home_page.dart';
 import 'movie_list.dart';
 
 class HomePageState extends State<HomePage> {
-  int currentPage = 4;
-  int moviesPerPage = 50;
+  static const int moviesPerPageLimit = 50;
+
+  int currentPageIndex = 4;
   MovieList movieList = MovieList();
-  bool isLoading = false;
+  bool isLoadingMovies = false;
 
   @override
   void initState() {
@@ -19,29 +20,29 @@ class HomePageState extends State<HomePage> {
   }
 
   Future<void> _loadMovies() async {
-    if (isLoading) return;
+    if (isLoadingMovies) return;
 
     setState(() {
-      isLoading = true;
+      isLoadingMovies = true;
     });
 
     try {
-      final movieStartId = (currentPage - 1) * moviesPerPage + 6;
-      final movieEndId = movieStartId + moviesPerPage - 1;
+      final movieStartId = (currentPageIndex - 1) * moviesPerPageLimit + 6;
+      final movieEndId = movieStartId + moviesPerPageLimit - 1;
       for (int movieId = movieStartId; movieId <= movieEndId; movieId++) {
         await _loadMovieDetails(movieId);
       }
+      currentPageIndex++;
     } catch (e) {
       // ignore: avoid_print
-      print('Erro ao carregar os detalhes do filme: $e');
+      print('Erro ao carregar os detalhes do filme');
     } finally {
       setState(() {
-        isLoading = false;
+        isLoadingMovies = false;
       });
     }
   }
 
-//método para recarregar os detalhes dos filmes
   Future<void> _loadMovieDetails(int movieId) async {
     final movieDetails = await getMovieDetails(movieId);
     if (movieDetails != null) {
@@ -55,12 +56,12 @@ class HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: ColorStandard.backgroundColor,
-      appBar: _appBar(),
+      appBar: _buildAppBar(),
       body: SingleChildScrollView(
         child: Column(
           children: [
             const SizedBox(height: 30),
-            movieList.buildMoviesList(context),
+            _buildMoviesListWidget(context),
             const SizedBox(height: 30),
           ],
         ),
@@ -68,7 +69,7 @@ class HomePageState extends State<HomePage> {
     );
   }
 
-  PreferredSizeWidget _appBar() {
+  PreferredSizeWidget _buildAppBar() {
     return AppBar(
       backgroundColor: ColorStandard.backgroundColor,
       elevation: 2,
@@ -83,5 +84,9 @@ class HomePageState extends State<HomePage> {
         ),
       ),
     );
+  }
+
+  Widget _buildMoviesListWidget(BuildContext context) {
+    return movieList.buildMoviesList(context);
   }
 }
