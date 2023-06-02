@@ -1,5 +1,5 @@
-import 'package:branef_movies/src/models/components/colors_standard.dart';
-import 'package:branef_movies/src/models/home/pages/home_page.dart';
+import 'package:branef_movies/models/components/colors_standard.dart';
+import 'package:branef_movies/models/home/pages/home_page.dart';
 import 'package:flutter/material.dart';
 import 'dart:async';
 
@@ -7,11 +7,10 @@ class Splash extends StatefulWidget {
   const Splash({Key? key}) : super(key: key);
 
   @override
-  // ignore: library_private_types_in_public_api
-  _SplashState createState() => _SplashState();
+  SplashState createState() => SplashState();
 }
 
-class _SplashState extends State<Splash> {
+class SplashState extends State<Splash> {
   @override
   void initState() {
     super.initState();

@@ -27,11 +27,22 @@ class HomePageState extends State<HomePage> {
     });
 
     try {
-      final movieStartId = (currentPageIndex - 1) * moviesPerPageLimit + 6;
-      final movieEndId = movieStartId + moviesPerPageLimit - 1;
-      for (int movieId = movieStartId; movieId <= movieEndId; movieId++) {
-        await _loadMovieDetails(movieId);
+      final movieStartIndex = (currentPageIndex - 1) * moviesPerPageLimit + 6;
+      final movieEndIndex = movieStartIndex + moviesPerPageLimit - 1;
+
+      // Lista para armazenar as chamadas assíncronas de carregamento de detalhes
+      final movieDetailsFutures = <Future<void>>[];
+
+      // Loop assíncrono para carregar detalhes dos filmes em paralelo
+      for (int movieIndex = movieStartIndex;
+          movieIndex <= movieEndIndex;
+          movieIndex++) {
+        movieDetailsFutures.add(_loadMovieDetails(movieIndex));
       }
+
+      // Aguarda a conclusão de todas as chamadas assíncronas
+      await Future.wait(movieDetailsFutures);
+
       currentPageIndex++;
     } catch (e) {
       // ignore: avoid_print

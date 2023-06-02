@@ -1,7 +1,5 @@
 import 'package:equatable/equatable.dart';
-import 'package:http/http.dart';
 
-//organnizar state do bloc
 class AppState extends Equatable {
   final int movies;
   final bool isLoading;
@@ -21,12 +19,4 @@ class AppState extends Equatable {
 
   @override
   List<Object?> get props => [movies, isLoading];
-}
-
-abstract class ClientState {
-  List<Client> clients;
-
-  ClientState({
-    required this.clients,
-  });
 }

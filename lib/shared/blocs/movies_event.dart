@@ -1,0 +1,1 @@
+enum AppEvent { increment, decrement }
