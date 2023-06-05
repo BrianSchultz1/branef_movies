@@ -1,38 +1,20 @@
-import 'package:branef_movies/models/components/colors_standard.dart';
-import 'package:branef_movies/models/home/routes/app_routes.dart';
 import 'package:branef_movies/shared/blocs/movies_bloc.dart';
+import 'package:branef_movies/shared/repositories/app_module.dart';
+import 'package:branef_movies/shared/widgets/app_widget.dart';
 import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 
 void main() async {
-  runApp(
-    DevicePreview(
+  runApp(ModularApp(
+    module: AppModule(),
+    child: DevicePreview(
       enabled: true,
       builder: (context) => BlocProvider<AppBloc>(
         create: (context) => AppBloc(),
         child: MyApp(),
       ),
     ),
-  );
-}
-
-class MyApp extends StatelessWidget {
-  final AppBloc appBloc = AppBloc();
-  MyApp({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return BlocProvider<AppBloc>(
-      create: (context) => appBloc,
-      child: MaterialApp(
-        debugShowCheckedModeBanner: false,
-        locale: DevicePreview.locale(context),
-        builder: DevicePreview.appBuilder,
-        theme: ThemeData(primaryColor: ColorStandard.backgroundColor),
-        initialRoute: '/',
-        routes: AppRoutes.generateRoutes(context),
-      ),
-    );
-  }
+  ));
 }
