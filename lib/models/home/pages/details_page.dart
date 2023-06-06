@@ -1,27 +1,18 @@
 import 'package:flutter/material.dart';
 import 'movies_details_page.dart';
 
-class DetailsPage extends StatelessWidget {
-  final String movieTitle;
-  final String movieInfo;
-  final String imageUrl;
-  final String movieDetails;
-
+class DetailsPage extends MoviesDetails {
   const DetailsPage({
     Key? key,
-    required this.movieTitle,
-    required this.movieInfo,
-    required this.imageUrl,
-    required this.movieDetails,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return MoviesDetails(
-      movieTitle: movieTitle,
-      movieInfo: movieInfo,
-      imageUrl: imageUrl,
-      movieDetails: movieDetails,
-    );
-  }
+    required String movieTitle,
+    required String movieInfo,
+    required String imageUrl,
+    required String movieDetails,
+  }) : super(
+          key: key,
+          movieTitle: movieTitle,
+          movieInfo: movieInfo,
+          imageUrl: imageUrl,
+          movieDetails: movieDetails,
+        );
 }
