@@ -1,7 +1,7 @@
 // Modulo do projeto fica armazenado aqui
 import 'package:branef_movies/shared/repositories/home_module.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import '../../models/home/pages/details_page.dart';
+import '../../features/movie_details/details_page.dart';
 
 class AppModule extends Module {
   @override

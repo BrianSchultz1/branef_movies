@@ -1,38 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
-import '../../components/colors_standard.dart';
-import 'movie_details.dart';
+import '../../../../models/components/colors_standard.dart';
+import '../../../movie_details/movie_details.dart';
 
-class MovieList {
-  List<MovieDetails> movies = [];
+class MovieItem extends StatelessWidget {
+  final MovieDetails movie;
 
-  void addMovie(MovieDetails movie) {
-    movies.add(movie);
-  }
+  const MovieItem({Key? key, required this.movie}) : super(key: key);
 
-  Widget buildMoviesList(BuildContext context) {
-    return Container(
-      constraints: const BoxConstraints(maxWidth: 500),
-      child: ListView.builder(
-        shrinkWrap: true,
-        physics: const NeverScrollableScrollPhysics(),
-        itemCount: movies.length,
-        itemBuilder: (context, index) {
-          final movie = movies[index];
-          return Column(
-            children: [
-              _movieItem(context, movie),
-              const SizedBox(height: 10),
-              _buildLine(),
-              const SizedBox(height: 10),
-            ],
-          );
-        },
-      ),
-    );
-  }
-
-  Widget _movieItem(BuildContext context, MovieDetails movie) {
+  @override
+  Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(left: 50),
       child: Row(
@@ -59,9 +36,10 @@ class MovieList {
               Text(
                 movie.title,
                 style: const TextStyle(
-                    color: ColorStandard.whiteColor,
-                    fontFamily: 'Roboto',
-                    fontSize: 16),
+                  color: ColorStandard.whiteColor,
+                  fontFamily: 'Roboto',
+                  fontSize: 16,
+                ),
               ),
               const SizedBox(height: 10),
               RatingBar.builder(
@@ -95,7 +73,7 @@ class MovieList {
                       'movieInfo':
                           '${movie.releaseYear} | ${movie.duration} min',
                       'imageUrl': movie.imageUrl,
-                      'movieDetails': movie.details
+                      'movieDetails': movie.details,
                     },
                   );
                 },
@@ -118,24 +96,6 @@ class MovieList {
             ],
           ),
         ],
-      ),
-    );
-  }
-
-  Widget _buildLine() {
-    return Container(
-      height: 1,
-      decoration: const BoxDecoration(
-        gradient: LinearGradient(
-          begin: Alignment.centerLeft,
-          end: Alignment.centerRight,
-          colors: [
-            Color.fromARGB(0, 145, 145, 145),
-            Colors.white,
-            Color.fromARGB(0, 145, 145, 145),
-          ],
-          stops: [0.1, 0.5, 1.0],
-        ),
       ),
     );
   }

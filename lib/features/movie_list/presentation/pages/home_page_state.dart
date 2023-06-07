@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-import '../../components/colors_standard.dart';
+import '../../../models/components/colors_standard.dart';
 import '../services/api_service.dart';
 import 'home_page.dart';
 import 'movie_list.dart';

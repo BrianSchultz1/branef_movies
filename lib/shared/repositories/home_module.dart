@@ -1,7 +1,7 @@
-import 'package:branef_movies/models/home/pages/home_page.dart';
+import 'package:branef_movies/features/home/pages/home_page.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import '../../models/home/pages/details_page.dart';
-import '../../models/home/presentation/splash.dart';
+import '../../features/movie_details/details_page.dart';
+import '../../features/presentation/splash.dart';
 
 class HomeModule extends Module {
   @override

@@ -1,4 +1,4 @@
-import 'package:branef_movies/models/home/presentation/splash_state.dart';
+import 'package:branef_movies/features/presentation/splash_state.dart';
 import 'package:flutter/material.dart';
 
 class Splash extends StatefulWidget {
