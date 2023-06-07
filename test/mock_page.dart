@@ -1,5 +1,5 @@
-import 'package:branef_movies/features/home/presentation/pages/movie_list.dart';
-import 'package:branef_movies/features/movie_details/movie_details.dart';
+import 'package:branef_movies/modules/movie_list/presentation/pages/movie_list.dart';
+import 'package:branef_movies/modules/movie_details/movie_details.dart';
 import 'package:flutter/material.dart';
 // ignore: depend_on_referenced_packages
 import 'package:flutter_test/flutter_test.dart';

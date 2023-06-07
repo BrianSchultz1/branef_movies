@@ -1,4 +1,4 @@
-import 'package:branef_movies/models/components/colors_standard.dart';
+import 'package:branef_movies/shared/utils/colors_standard.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutter/material.dart';
 import 'dart:async';

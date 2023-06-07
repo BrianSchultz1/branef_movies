@@ -1,4 +1,4 @@
-import 'package:branef_movies/features/home/presentation/widgets/movie_item.dart';
+import 'package:branef_movies/modules/movie_list/presentation/widgets/movie_item.dart';
 import 'package:flutter/material.dart';
 import '../../../movie_details/movie_details.dart';
 

@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
-import '../../models/components/colors_standard.dart';
+import '../utils/colors_standard.dart';
 import '../blocs/movies_bloc.dart';
 
 class MyApp extends StatelessWidget {
