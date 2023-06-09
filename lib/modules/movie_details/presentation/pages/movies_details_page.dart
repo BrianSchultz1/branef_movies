@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../shared/utils/colors_standard.dart';
+import '../../../../shared/utils/colors_standard.dart';
 
 class MoviesDetails extends StatelessWidget {
   final String movieTitle;

@@ -1,6 +1,6 @@
 import 'package:branef_movies/modules/movie_list/presentation/widgets/movie_item.dart';
 import 'package:flutter/material.dart';
-import '../../../movie_details/movie_details.dart';
+import '../../../movie_details/presentation/pages/movie_details.dart';
 
 class MovieList {
   List<MovieDetails> movies = [];

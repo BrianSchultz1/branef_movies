@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import '../../../../shared/utils/colors_standard.dart';
-import '../../../movie_details/movie_details.dart';
+import '../../../movie_details/presentation/pages/movie_details.dart';
 
 class MovieItem extends StatelessWidget {
   final MovieDetails movie;

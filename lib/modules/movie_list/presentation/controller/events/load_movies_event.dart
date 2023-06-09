@@ -1,5 +1,4 @@
 // o evento que vai carregar os filmes
-
 import 'movie_list_events.dart';
 
 class LoadMoviesEvent implements MovieListEvents {
