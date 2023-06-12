@@ -1,6 +1,5 @@
 import 'movie_details_events.dart';
 
 class LoadDetailsEvents implements MovieDetailsEvents {
-//  LoadDetailsEvents({this.page = 1});
-//  final int page;
+  // não existe nenhum evento nessa página até o momento
 }

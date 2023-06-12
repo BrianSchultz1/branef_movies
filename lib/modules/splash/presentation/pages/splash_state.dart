@@ -1,54 +1,66 @@
-import 'package:branef_movies/shared/utils/colors_standard.dart';
-import 'package:flutter_modular/flutter_modular.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter/material.dart';
-import 'dart:async';
-import 'splash.dart';
+import '../controller/bloc/splash_bloc.dart';
+import '../controller/events/splash_timer_started_event.dart';
+import '../controller/state/splash_state.dart';
+import 'package:branef_movies/shared/utils/colors_standard.dart';
 
-class SplashState extends State<Splash> {
+class Splash extends StatefulWidget {
+  const Splash({Key? key}) : super(key: key);
+
+  @override
+  _SplashState createState() => _SplashState();
+}
+
+class _SplashState extends State<Splash> {
+  SplashBloc splashBloc = SplashBloc();
+
   @override
   void initState() {
     super.initState();
-
-    Timer(const Duration(milliseconds: 4400), () {
-      Modular.to.pushReplacementNamed('/home');
-    });
+    splashBloc.add(SplashTimerStartedEvent());
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Container(
-        padding: const EdgeInsets.symmetric(horizontal: 75),
-        color: ColorStandard.backgroundColor,
-        child: const Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text(
-                textAlign: TextAlign.center,
-                "BranefMovies",
-                style: TextStyle(
-                  color: ColorStandard.whiteColor,
-                  fontSize: 60,
-                  fontWeight: FontWeight.normal,
-                  fontFamily: 'Romanesco',
-                ),
+    return BlocBuilder<SplashBloc, SplashState>(
+      bloc: splashBloc,
+      builder: (context, state) {
+        return Scaffold(
+          body: Container(
+            padding: const EdgeInsets.symmetric(horizontal: 75),
+            color: ColorStandard.backgroundColor,
+            child: const Center(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    "BranefMovies",
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      color: ColorStandard.whiteColor,
+                      fontSize: 60,
+                      fontWeight: FontWeight.normal,
+                      fontFamily: 'Romanesco',
+                    ),
+                  ),
+                  SizedBox(height: 16.0),
+                  Text(
+                    "Watch and find movies that bring your mood back",
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      color: ColorStandard.whiteColor,
+                      fontSize: 24,
+                      fontWeight: FontWeight.normal,
+                      fontFamily: 'Staatliches',
+                    ),
+                  ),
+                ],
               ),
-              SizedBox(height: 16.0),
-              Text(
-                textAlign: TextAlign.center,
-                "Watch and find movies that bring your mood back",
-                style: TextStyle(
-                  color: ColorStandard.whiteColor,
-                  fontSize: 24,
-                  fontWeight: FontWeight.normal,
-                  fontFamily: 'Staatliches',
-                ),
-              ),
-            ],
+            ),
           ),
-        ),
-      ),
+        );
+      },
     );
   }
 }

@@ -1,9 +1,14 @@
-import 'package:branef_movies/modules/splash/presentation/pages/splash_state.dart';
-import 'package:flutter/material.dart';
+import 'dart:async';
+import 'package:flutter_modular/flutter_modular.dart';
+import '../controller/bloc/splash_bloc.dart';
+import '../controller/events/splash_timer_finished_event.dart';
 
-class Splash extends StatefulWidget {
-  const Splash({Key? key}) : super(key: key);
+class SplashState {
+  SplashBloc splashBloc = Modular.get<SplashBloc>();
 
-  @override
-  SplashState createState() => SplashState();
+  SplashState() {
+    Timer(const Duration(milliseconds: 4400), () {
+      splashBloc.add(SplashTimerFinishedEvent());
+    });
+  }
 }
