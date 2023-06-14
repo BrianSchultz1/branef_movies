@@ -1,12 +1,12 @@
 import 'package:branef_movies/modules/movie_list/presentation/pages/home_page.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import '../../modules/movie_details/presentation/pages/details_page.dart';
+import '../../modules/splash/presentation/pages/splash_page.dart';
 
 class HomeModule extends Module {
   @override
   List<ModularRoute> get routes => [
-        ChildRoute('/', child: (context, args) => const Spacer()),
+        ChildRoute('/', child: (context, args) => const SplashPage()),
         ChildRoute('/home', child: (context, args) => const HomePage()),
         ChildRoute('/details',
             child: (_, args) => DetailsPage(

@@ -1,24 +1,22 @@
 import 'package:bloc/bloc.dart';
 import 'package:branef_movies/modules/splash/presentation/controller/events/splash_events.dart';
-import 'package:branef_movies/modules/splash/presentation/controller/state/splash_initial_state.dart';
 import 'package:branef_movies/modules/splash/presentation/controller/state/splash_state.dart';
-import 'dart:async';
-import '../events/splash_timer_finished_event.dart';
-import '../events/splash_timer_started_event.dart';
+import '../../../../../shared/repositories/app_module.dart';
+import '../events/splash_load_event.dart';
+import '../state/splash_loaded_successfully_event.dart';
 import '../state/splash_loading_state.dart';
 
 class SplashBloc extends Bloc<SplashEvent, SplashState> {
-  SplashBloc() : super(SplashInitialState());
+  final splashRepository = AppModule;
 
-  SplashState get initialState => SplashInitialState();
-
-  Stream<SplashState> mapEventToState(SplashEvent event) async* {
-    if (event is SplashTimerStartedEvent) {
-      yield SplashLoadingState();
-      await Future.delayed(const Duration(milliseconds: 4000));
-      add(SplashTimerFinishedEvent());
-    } else if (event is SplashTimerFinishedEvent) {
-      yield SplashInitialState();
-    }
+  SplashBloc() : super(const SplashLoadingState()) {
+    on<SplashLoadEvent>(
+      (event, emit) async {
+        emit(const SplashLoadingState());
+        await Future.delayed(const Duration(milliseconds: 4000), () {
+          emit(const SplashLoadedSuccessfullyState());
+        });
+      },
+    );
   }
 }

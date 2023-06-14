@@ -1,4 +1,3 @@
-// Modulo do projeto fica armazenado aqui
 import 'package:branef_movies/shared/repositories/home_module.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import '../../modules/movie_details/presentation/pages/details_page.dart';

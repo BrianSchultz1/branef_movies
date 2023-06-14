@@ -6,13 +6,13 @@ import '../../../../shared/utils/colors_standard.dart';
 import '../../../movie_list/presentation/controller/states/loading_movies_state.dart';
 import '../controller/blocs/movie_details_bloc.dart';
 
-class MoviesDetails extends StatefulWidget {
+class MoviesDetailsPage extends StatefulWidget {
   final String movieTitle;
   final String movieInfo;
   final String imageUrl;
   final String movieDetails;
 
-  const MoviesDetails({
+  const MoviesDetailsPage({
     Key? key,
     required this.movieTitle,
     required this.movieInfo,
@@ -21,10 +21,10 @@ class MoviesDetails extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  State<MoviesDetails> createState() => _MoviesDetailsState();
+  State<MoviesDetailsPage> createState() => _MoviesDetailsState();
 }
 
-class _MoviesDetailsState extends State<MoviesDetails> {
+class _MoviesDetailsState extends State<MoviesDetailsPage> {
   MovieDetailsBloc movieDetailsBloc = Modular.get<MovieDetailsBloc>();
 
   @override

@@ -1,3 +1,3 @@
 abstract class SplashEvent {
-  SplashEvent();
+  const SplashEvent();
 }

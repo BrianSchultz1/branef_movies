@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'movies_details_page.dart';
 
-class DetailsPage extends MoviesDetails {
+class DetailsPage extends MoviesDetailsPage {
   const DetailsPage({
     Key? key,
     required String movieTitle,
