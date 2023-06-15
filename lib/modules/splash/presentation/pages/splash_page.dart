@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:branef_movies/shared/utils/colors_standard.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 
 import '../controller/bloc/splash_bloc.dart';
 import '../controller/events/splash_load_event.dart';
@@ -16,6 +17,7 @@ class SplashPage extends StatefulWidget {
 
 class SplashPageState extends State<SplashPage> {
   late final SplashBloc bloc;
+  bool isLoaded = false;
 
   @override
   void initState() {
@@ -30,7 +32,7 @@ class SplashPageState extends State<SplashPage> {
       body: BlocListener<SplashBloc, SplashState>(
         listener: (context, state) {
           if (state is SplashLoadedSuccessfullyState) {
-            return;
+            Modular.to.navigate('/home');
           }
         },
         child: Container(

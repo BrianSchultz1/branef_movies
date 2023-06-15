@@ -2,10 +2,10 @@ import 'package:branef_movies/modules/movie_list/presentation/controller/states/
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_modular/flutter_modular.dart';
 import '../../../../shared/utils/colors_standard.dart';
 import '../../services/api_service.dart';
 import '../controller/blocs/movie_list_bloc.dart';
+import '../controller/events/load_movies_event.dart';
 import '../controller/states/movie_list_state.dart';
 import 'home_page.dart';
 import 'movie_list.dart';
@@ -16,11 +16,12 @@ class HomePageState extends State<HomePage> {
   int currentPageIndex = 4;
   MovieList movieList = MovieList();
   bool isLoadingMovies = false;
-  MovieListBloc movieListBloc = Modular.get<MovieListBloc>();
+  late final MovieListBloc bloc;
 
   @override
   void initState() {
     super.initState();
+    bloc.add(LoadMoviesEvent());
     _loadMovies();
   }
 
@@ -71,25 +72,24 @@ class HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<MovieListBloc, MovieListState>(
-        bloc: movieListBloc,
         builder: (context, state) {
-          if (state is LoadingMoviesState) {
-            return Container();
-          }
-          return Scaffold(
-            backgroundColor: ColorStandard.backgroundColor,
-            appBar: _buildAppBar(),
-            body: SingleChildScrollView(
-              child: Column(
-                children: [
-                  const SizedBox(height: 30),
-                  _buildMoviesListWidget(context),
-                  const SizedBox(height: 30),
-                ],
-              ),
-            ),
-          );
-        });
+      if (state is LoadingMoviesState) {
+        return Container();
+      }
+      return Scaffold(
+        backgroundColor: ColorStandard.backgroundColor,
+        appBar: _buildAppBar(),
+        body: SingleChildScrollView(
+          child: Column(
+            children: [
+              const SizedBox(height: 30),
+              _buildMoviesListWidget(context),
+              const SizedBox(height: 30),
+            ],
+          ),
+        ),
+      );
+    });
   }
 
   PreferredSizeWidget _buildAppBar() {

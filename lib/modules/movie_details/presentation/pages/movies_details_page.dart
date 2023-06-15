@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_modular/flutter_modular.dart';
 
 import '../../../../shared/utils/colors_standard.dart';
 import '../../../movie_list/presentation/controller/states/loading_movies_state.dart';
-import '../controller/blocs/movie_details_bloc.dart';
 
 class MoviesDetailsPage extends StatefulWidget {
   final String movieTitle;
@@ -25,12 +23,9 @@ class MoviesDetailsPage extends StatefulWidget {
 }
 
 class _MoviesDetailsState extends State<MoviesDetailsPage> {
-  MovieDetailsBloc movieDetailsBloc = Modular.get<MovieDetailsBloc>();
-
   @override
   Widget build(BuildContext context) {
     return BlocBuilder(
-      bloc: movieDetailsBloc,
       builder: (context, state) {
         if (state is LoadingMoviesState) {
           return Scaffold(
