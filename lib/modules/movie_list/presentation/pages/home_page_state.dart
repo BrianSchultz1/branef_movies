@@ -72,24 +72,25 @@ class HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<MovieListBloc, MovieListState>(
+        bloc: bloc,
         builder: (context, state) {
-      if (state is LoadingMoviesState) {
-        return Container();
-      }
-      return Scaffold(
-        backgroundColor: ColorStandard.backgroundColor,
-        appBar: _buildAppBar(),
-        body: SingleChildScrollView(
-          child: Column(
-            children: [
-              const SizedBox(height: 30),
-              _buildMoviesListWidget(context),
-              const SizedBox(height: 30),
-            ],
-          ),
-        ),
-      );
-    });
+          if (state is LoadingMoviesState) {
+            return Container();
+          }
+          return Scaffold(
+            backgroundColor: ColorStandard.backgroundColor,
+            appBar: _buildAppBar(),
+            body: SingleChildScrollView(
+              child: Column(
+                children: [
+                  const SizedBox(height: 30),
+                  _buildMoviesListWidget(context),
+                  const SizedBox(height: 30),
+                ],
+              ),
+            ),
+          );
+        });
   }
 
   PreferredSizeWidget _buildAppBar() {

@@ -5,7 +5,7 @@ import 'package:flutter_modular/flutter_modular.dart';
 
 import '../controller/bloc/splash_bloc.dart';
 import '../controller/events/splash_load_event.dart';
-import '../controller/state/splash_loaded_successfully_event.dart';
+import '../controller/state/splash_loaded_successfully_state.dart';
 import '../controller/state/splash_state.dart';
 
 class SplashPage extends StatefulWidget {
@@ -30,6 +30,7 @@ class SplashPageState extends State<SplashPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: BlocListener<SplashBloc, SplashState>(
+        bloc: bloc,
         listener: (context, state) {
           if (state is SplashLoadedSuccessfullyState) {
             Modular.to.navigate('/home');
