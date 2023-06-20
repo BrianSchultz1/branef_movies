@@ -1,3 +1,4 @@
+import 'package:branef_movies/modules/movie_details/presentation/controller/states/loaded_successfully_state.dart';
 import 'package:branef_movies/modules/movie_list/presentation/controller/states/loading_movies_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -21,8 +22,9 @@ class HomePageState extends State<HomePage> {
   @override
   void initState() {
     super.initState();
+    bloc = MovieListBloc(LoadingMoviesState());
     bloc.add(LoadMoviesEvent());
-    _loadMovies();
+    _loadMovies;
   }
 
   Future<void> _loadMovies() async {
@@ -72,11 +74,17 @@ class HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<MovieListBloc, MovieListState>(
-        bloc: bloc,
-        builder: (context, state) {
-          if (state is LoadingMoviesState) {
-            return Container();
-          }
+      bloc: bloc,
+      builder: (context, state) {
+        if (state is LoadingMoviesState) {
+          return Scaffold(
+            backgroundColor: ColorStandard.backgroundColor,
+            appBar: _buildAppBar(),
+            body: const Center(
+              child: CircularProgressIndicator(),
+            ),
+          );
+        } else if (state is LoadedSuccessfullyState) {
           return Scaffold(
             backgroundColor: ColorStandard.backgroundColor,
             appBar: _buildAppBar(),
@@ -90,7 +98,12 @@ class HomePageState extends State<HomePage> {
               ),
             ),
           );
-        });
+        } else {
+          // Outros estados podem ser tratados aqui, se necessário
+          return Container();
+        }
+      },
+    );
   }
 
   PreferredSizeWidget _buildAppBar() {
