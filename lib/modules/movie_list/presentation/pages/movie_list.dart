@@ -9,7 +9,7 @@ class MovieList {
     movies.add(movie);
   }
 
-  Widget buildMoviesList(BuildContext context) {
+  Widget buildMoviesList(List<MovieDetails> movies) {
     return Container(
       constraints: const BoxConstraints(maxWidth: 500),
       child: ListView.builder(

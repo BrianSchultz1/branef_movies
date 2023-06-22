@@ -39,7 +39,8 @@ void main() {
     // Renderização da lista de filmes
     await tester.pumpWidget(MaterialApp(
       home: Builder(
-        builder: (context) => movieList.buildMoviesList(context),
+        builder: (context) =>
+            movieList.buildMoviesList(context as List<MovieDetails>),
       ),
     ));
 

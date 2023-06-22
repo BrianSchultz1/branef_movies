@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../shared/utils/colors_standard.dart';
-import '../../../movie_list/presentation/controller/states/loading_movies_state.dart';
+import '../controller/states/loading_movies_details_state.dart';
 
 class MoviesDetailsPage extends StatefulWidget {
   final String movieTitle;
@@ -27,7 +27,7 @@ class _MoviesDetailsState extends State<MoviesDetailsPage> {
   Widget build(BuildContext context) {
     return BlocBuilder(
       builder: (context, state) {
-        if (state is LoadingMoviesState) {
+        if (state is LoadingMovieDetailsState) {
           return Scaffold(
             backgroundColor: ColorStandard.backgroundColor,
             body: SingleChildScrollView(

@@ -1,4 +1,4 @@
-import 'package:branef_movies/shared/repositories/app_module.dart';
+import 'package:branef_movies/shared/modules/app_module.dart';
 import 'package:branef_movies/shared/widgets/app_widget.dart';
 import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
